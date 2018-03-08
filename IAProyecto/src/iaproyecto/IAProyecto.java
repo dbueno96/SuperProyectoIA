@@ -19,7 +19,7 @@ public class IAProyecto {
     public static void main(String[] args) throws IOException {
         
         Archivo a = new Archivo();
-        /*
+        
         String ruta = a.leerArchivo("/home/daniel/Desktop/hola.txt");
         String[] parts = ruta.split(" ");
        /* for(int i = 0 ; i < parts.length; i++ ) 
@@ -27,7 +27,7 @@ public class IAProyecto {
             System.out.println(parts[i]);
         }*/
      //   System.out.println(parts);
-     /*
+     
         int[][] arrayCamino = new int[10][10];
         int j=0;
         
@@ -56,25 +56,7 @@ public class IAProyecto {
         System.out.println(arrayCamino);
         
         
-        */
-        System.out.println("Daniel");
-        
-        int [][] mapa = new int[10][10];
-        mapa= a.readText();
-        /*
-        for(int i= 0; i < 10; i++)
-        {
-            for(j= 0; j<10; j++)
-            {
-                System.out.println("i: "+i);
-                System.out.println("j: "+j);
-                
-                System.out.println(mapa[i][j]);
-                System.out.println(" ");
-            }
-           
-            System.out.println("\n");
-        } */
+      
      }
    
 }
