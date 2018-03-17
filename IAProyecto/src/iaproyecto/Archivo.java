@@ -55,7 +55,7 @@ public class Archivo {
         try
         {
             //ruta de tu archivo
-            String ruta = "/home/daniel/Desktop/hola.txt";
+            String ruta = "/home/daniel/Desktop/Prueba1.txt";
             BufferedReader br = getBuffered(ruta);
             //leemos la primera linea
             String linea =  br.readLine();
@@ -82,7 +82,14 @@ public class Archivo {
                 
             }
             
-            
+            for(int i= 0 ; i <10; i++)
+            {
+                for(int j=0; j<10; j++ ) 
+                {
+                    System.out.print(matriz[i][j] + " ");
+                }
+                System.out.println();
+            }
             return matriz;
         }
         catch (IOException | NumberFormatException e) {

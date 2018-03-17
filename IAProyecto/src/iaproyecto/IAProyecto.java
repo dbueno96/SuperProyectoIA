@@ -31,6 +31,10 @@ public class IAProyecto {
         int[][] arrayCamino = new int[10][10];
         int j=0;
         
+        arrayCamino = a.readText(); 
+        
+        
+        /*
         for(int i=0;i<10;i++){
             
             if ((i==10) && (i==90) && (i==20) && (i==30) && (i==40) && (i==50) && (i==60) && (i==70) && (i==80)){
@@ -55,7 +59,7 @@ public class IAProyecto {
         }
         System.out.println(arrayCamino);
         
-        
+      */  
       
      }
    
