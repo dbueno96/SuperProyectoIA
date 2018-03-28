@@ -20,46 +20,16 @@ public class IAProyecto {
         
         Archivo a = new Archivo();
         
-        String ruta = a.leerArchivo("/home/daniel/Desktop/hola.txt");
+        String ruta = a.leerArchivo("/Users/Nathalia/Desktop/Prueba1.txt");
         String[] parts = ruta.split(" ");
-       /* for(int i = 0 ; i < parts.length; i++ ) 
-        {
-            System.out.println(parts[i]);
-        }*/
-     //   System.out.println(parts);
      
         int[][] arrayCamino = new int[10][10];
-        int j=0;
+        arrayCamino = a.readText();
         
-        arrayCamino = a.readText(); 
-        
-        
-        /*
-        for(int i=0;i<10;i++){
-            
-            if ((i==10) && (i==90) && (i==20) && (i==30) && (i==40) && (i==50) && (i==60) && (i==70) && (i==80)){
-                j=j++;
-                i= 0;
-                arrayCamino[i][j] = Integer.parseInt(parts[i]);
-                System.out.println(i);
-            }
-            else 
-               // System.out.println(i);
-                arrayCamino[i][j] = Integer.parseInt(parts[i]);
-                
-        }
-        for (int i = 0 ; i < arrayCamino[0].length  ; i++ )
-        {
-            for(int t = 0 ; t < arrayCamino[0].length; t++)
-            {
-                System.out.println(arrayCamino[i][t]);
-                
-            }
-            System.out.println("\n");
-        }
-        System.out.println(arrayCamino);
-        
-      */  
+        Algoritmos algo = new Algoritmos();
+        //Nodo nodo = new Nodo();
+        boolean respuesta = algo.busquedaAmplitud(arrayCamino);
+        System.out.println(respuesta);
       
      }
    
