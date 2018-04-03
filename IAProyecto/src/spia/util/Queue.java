@@ -41,7 +41,20 @@ public class Queue {
         }
         queue.add(i + 1, node);
     }
-
+    
+    public void add(int pos, DefaultMutableTreeNode node){
+        
+        queue.add(pos, node);
+    }
+    public DefaultMutableTreeNode get (int i )
+    {
+        return queue.get(i);
+    }
+    public DefaultMutableTreeNode poll(int i){
+        DefaultMutableTreeNode tormv = queue.get(i);
+        queue.remove(i);
+        return tormv;
+    }
     public DefaultMutableTreeNode poll() throws ArrayIndexOutOfBoundsException {
         DefaultMutableTreeNode tormv = queue.get(queue.size() - 1);
         queue.remove(queue.size() - 1);

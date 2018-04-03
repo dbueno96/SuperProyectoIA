@@ -20,7 +20,7 @@ public class IAProyecto {
         
         Archivo a = new Archivo();
         
-        String ruta = a.leerArchivo("/Users/Nathalia/Desktop/Prueba1.txt");
+        String ruta = a.leerArchivo("/home/daniel/Desktop/Prueba1.txt");
         String[] parts = ruta.split(" ");
      
         int[][] arrayCamino = new int[10][10];
@@ -30,6 +30,8 @@ public class IAProyecto {
         //Nodo nodo = new Nodo();
         boolean respuesta = algo.busquedaAmplitud(arrayCamino);
         System.out.println(respuesta);
+        
+        
       
      }
    
