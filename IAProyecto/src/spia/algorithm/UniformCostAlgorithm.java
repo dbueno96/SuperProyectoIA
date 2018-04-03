@@ -37,7 +37,7 @@ public class UniformCostAlgorithm extends BaseAlgorithm implements SearchAlgorit
         childrenpositions[2] = new int[]{coor[0], coor[1] + 1}; // Izquierda
         childrenpositions[3] = new int[]{coor[0] - 1, coor[1]}; // Arriba
         for (int i = 0; i < childrenpositions.length; i++) {
-            // Verificamos que sea una posicion valida, es decir que las cordenadas esten en el rango y no se trate de una pared.
+            // Verificamos que sea una posicion valida, es decir que las coordenadas esten en el rango y no se trate de una pared.
             if (super.isAValidPosition(childrenpositions[i])) {
                 // Preguntamos si el nodo ha sido expandido anteriormente en su camino.
                 // Con el fin de evitar ciclos.
@@ -47,9 +47,17 @@ public class UniformCostAlgorithm extends BaseAlgorithm implements SearchAlgorit
                     DefaultMutableTreeNode tmpJNode = new DefaultMutableTreeNode(tmpNode);
                     // Lo agregamos a los hijos del nodo padre, de esta manera construimos el arbol.
                     super.result.getTree().insertNodeInto(tmpJNode, node, node.getChildCount());
+                    
+                    // Actualizamos el snapshot del nodo expandido con respecto a la flor.
+                    // flower es true si la propiedad flower del nodo padre es true o si 
+                    // se encuentra en una posicion con flor. false en cualquier otro caso.
+                    tmpNode.setFlower(((Node) node.getUserObject()).isFlower() || super.isFlower(tmpJNode));
+                    
                     // Seteamos el costo del nuevo nodo, por medio de la funcion g(node).
                     tmpNode.setgValue(g(tmpJNode));
+                    // Seteamos el valor de f.
                     tmpNode.setfValue(f(tmpJNode));
+                    
                     // Incrementamos la cantidad de nodos creados.
                     super.getResult().incCreatedNodes();
                     // Añadimos el nodo creado a la cola para ser procesado.

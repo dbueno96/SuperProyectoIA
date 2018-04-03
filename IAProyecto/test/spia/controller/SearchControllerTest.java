@@ -27,11 +27,6 @@ public class SearchControllerTest {
     @BeforeClass
     public static void before() {
         Archivo a = new Archivo();
-        try {
-            a.leerArchivo("C:\\Users\\Viviana\\Desktop\\Prueba1.txt");
-        } catch (IOException ex) {
-            Logger.getLogger(SearchControllerTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
         MATRIX = a.readText();
     }
     

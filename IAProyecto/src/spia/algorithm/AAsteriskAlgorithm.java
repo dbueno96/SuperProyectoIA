@@ -45,7 +45,7 @@ public class AAsteriskAlgorithm extends BaseAlgorithm implements InformedSearchA
 
     @Override
     public void expand(DefaultMutableTreeNode node) {
-        int[] coor = (int[]) ((Node) node.getUserObject()).getCoordinate();
+        int[] coor = ((Node) node.getUserObject()).getCoordinate();
         // Agregmos a node cada HIJO VALIDO.
         // El orden de las operaciones sera Derecha, Abajo, Izquierda, Arriba.
         int[][] childrenpositions = new int[4][2];
@@ -64,11 +64,19 @@ public class AAsteriskAlgorithm extends BaseAlgorithm implements InformedSearchA
                     DefaultMutableTreeNode tmpJNode = new DefaultMutableTreeNode(tmpNode);
                     // Lo agregamos a los hijos del nodo padre, de esta manera construimos el arbol.
                     super.result.getTree().insertNodeInto(tmpJNode, node, node.getChildCount());
-
+                    
+                    // Actualizamos el snapshot del nodo expandido con respecto a la flor.
+                    // flower es true si la propiedad flower del nodo padre es true o si 
+                    // se encuentra en una posicion con flor. false en cualquier otro caso.
+                    tmpNode.setFlower(((Node) node.getUserObject()).isFlower() || super.isFlower(tmpJNode));
+                    
                     // Seteamos el costo del nuevo nodo, por medio de la funcion g(node).
                     tmpNode.setgValue(g(tmpJNode));
+                    // Seteamos el valor de la heuristica.
                     tmpNode.sethValue(h(tmpJNode));
+                    // Seteamos el valor de f.
                     tmpNode.setfValue(f(tmpJNode));
+                    
                     // Aumentamos en uno la cantidad de nodos creados.
                     super.getResult().incCreatedNodes();
                     // Añadimos a la cola de nodos por procesar.
