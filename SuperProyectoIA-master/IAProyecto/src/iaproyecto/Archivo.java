@@ -55,7 +55,7 @@ public class Archivo {
         try
         {
             //ruta de tu archivo
-            String ruta = "/Users/Nathalia/Desktop/Prueba1.txt";
+            String ruta = "/Usuario/Desktop/Prueba1.txt";
             BufferedReader br = getBuffered(ruta);
             //leemos la primera linea
             String linea =  br.readLine();

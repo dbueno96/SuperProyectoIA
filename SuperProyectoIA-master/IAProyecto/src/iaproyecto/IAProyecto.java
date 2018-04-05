@@ -21,17 +21,12 @@ public class IAProyecto {
         
         Archivo a = new Archivo();
         
-        String ruta = a.leerArchivo("/Users/Nathalia/Desktop/Prueba1.txt");
+        String ruta = a.leerArchivo("/Usuario/Desktop/Prueba1.txt");
         String[] parts = ruta.split(" ");
      
         int[][] arrayCamino = new int[10][10];
         arrayCamino = a.readText();
         Gui ejecución = new Gui(arrayCamino);
-        
-        Algoritmos algo = new Algoritmos();
-        //Nodo nodo = new Nodo();
-        boolean respuesta = algo.busquedaAmplitud(arrayCamino);
-        System.out.println(respuesta);
       
      }
    
