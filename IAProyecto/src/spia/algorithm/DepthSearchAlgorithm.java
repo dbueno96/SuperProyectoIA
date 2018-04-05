@@ -13,7 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  */
 public class DepthSearchAlgorithm extends BaseAlgorithm implements SearchAlgorithm{
 
-   public static String Class_name = "Profundidad";
+   public static final String CLAZZ_NAME = "Profundidad";
 
     private int[] finalPosition;
 

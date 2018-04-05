@@ -13,7 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  */
 public class BreadthSearchAlgorithm extends BaseAlgorithm implements SearchAlgorithm {
 
-    public static String Class_name = "Amplitud";
+    public static final String CLAZZ_NAME = "Amplitud";
 
     private int[] finalPosition;
 

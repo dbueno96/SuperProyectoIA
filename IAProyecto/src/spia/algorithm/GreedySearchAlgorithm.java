@@ -13,7 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  */
 public class GreedySearchAlgorithm extends BaseAlgorithm implements InformedSearchAlgorithm {
 
-    public static String Class_name = "Avara";
+    public static final String CLAZZ_NAME = "Avara";
 
     private int[] finalPosition;
 

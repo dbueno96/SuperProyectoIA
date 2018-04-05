@@ -12,6 +12,9 @@ import spia.algorithm.BaseAlgorithm;
 import spia.algorithm.Node;
 import spia.algorithm.Result;
 import spia.algorithm.UniformCostAlgorithm;
+import spia.algorithm.BreadthSearchAlgorithm;
+import spia.algorithm.DepthSearchAlgorithm;
+import spia.algorithm.GreedySearchAlgorithm; 
 
 /**
  *
@@ -60,6 +63,29 @@ public class SearchController {
                 aa.search(jNode);                
                 result = aa.getResult();
                 break;
+            case DepthSearchAlgorithm.CLAZZ_NAME: 
+                DepthSearchAlgorithm dsa = new DepthSearchAlgorithm(); 
+                dsa.getResult().setTree(tree);
+                dsa.setmatrix(matrix);
+                dsa.search(jNode);
+                result = dsa.getResult();
+                break; 
+                
+            case BreadthSearchAlgorithm.CLAZZ_NAME:
+                BreadthSearchAlgorithm bsa = new BreadthSearchAlgorithm(); 
+                bsa.getResult().setTree(tree);
+                bsa.setmatrix(matrix);
+                bsa.search(jNode);
+                result = bsa.getResult(); 
+                break; 
+            case GreedySearchAlgorithm.CLAZZ_NAME: 
+                GreedySearchAlgorithm gsa = new GreedySearchAlgorithm () ; 
+                gsa.getResult().setTree(tree);
+                gsa.setmatrix(matrix);
+                gsa.search(jNode);
+                result = gsa.getResult(); 
+                break; 
+
             default:                
                 break; 
         }
