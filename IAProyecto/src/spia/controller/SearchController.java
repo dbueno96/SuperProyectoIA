@@ -43,7 +43,7 @@ public class SearchController {
         Result result = null;
         
         // Construimos el nodo donde esta mario.
-        Node node = new Node(this.getInitPosition(matrix));
+        Node node = new Node(this.getInitPosition(matrix), "");
         DefaultMutableTreeNode jNode = new DefaultMutableTreeNode(node);
         DefaultTreeModel tree = new DefaultTreeModel(jNode);
         
@@ -82,6 +82,7 @@ public class SearchController {
                 GreedySearchAlgorithm gsa = new GreedySearchAlgorithm () ; 
                 gsa.getResult().setTree(tree);
                 gsa.setmatrix(matrix);
+                gsa.setFinalPosition(this.getFinalPosition(matrix));
                 gsa.search(jNode);
                 result = gsa.getResult(); 
                 break; 

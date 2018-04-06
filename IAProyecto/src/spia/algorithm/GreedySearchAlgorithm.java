@@ -14,6 +14,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class GreedySearchAlgorithm extends BaseAlgorithm implements InformedSearchAlgorithm {
 
     public static final String CLAZZ_NAME = "Avara";
+    public static final String[] direcciones = {"derecha", "abajo", "arriba", "izquierda"};
 
     private int[] finalPosition;
 
@@ -60,7 +61,7 @@ public class GreedySearchAlgorithm extends BaseAlgorithm implements InformedSear
                 // Preguntamos si el nodo ha sido expandido anteriormente en su camino.
                 // Con el fin de evitar ciclos.
                 if (!super.hasBeenExpandedAux(childrenpositions[i], node)) {
-                    Node tmpNode = new Node(childrenpositions[i]);
+                    Node tmpNode = new Node(childrenpositions[i], direcciones[i]);
                     DefaultMutableTreeNode tmpJNode = new DefaultMutableTreeNode(tmpNode);
                     // Lo agregamos a los hijos del nodo padre, de esta manera construimos el arbol.
                     super.result.getTree().insertNodeInto(tmpJNode, node, node.getChildCount());
@@ -69,23 +70,28 @@ public class GreedySearchAlgorithm extends BaseAlgorithm implements InformedSear
                     // flower es true si la propiedad flower del nodo padre es true o si 
                     // se encuentra en una posicion con flor. false en cualquier otro caso.
                     tmpNode.setFlower(((Node) node.getUserObject()).isFlower() || super.isFlower(tmpJNode));
-                    
+
                     // Seteamos el costo del nuevo nodo, por medio de la funcion g(node).
-                    
                     tmpNode.sethValue(h(tmpJNode));
-                    
+
                     // Aumentamos en uno la cantidad de nodos creados.
                     super.getResult().incCreatedNodes();
-                    
 
                     // Añadimos a la cola de nodos por procesar.
+                    if (queue.isEmpty()) {
+                        super.queue.add(0, tmpJNode);
+                    } else {
+                        for (int j = 0; j < queue.getSize(); j++) {
 
-                    for (int j = 0; j < queue.getSize(); j++) {
-                        if(tmpNode.gethValue() <=((Node) ((DefaultMutableTreeNode) node.getParent()).getUserObject()).gethValue() ){
-                            super.queue.add(j, tmpJNode);
+                            if (tmpNode.gethValue() <= ((Node) ((DefaultMutableTreeNode) queue.get(j).getParent()).getUserObject()).gethValue()) {
+                                super.queue.add(j, tmpJNode);
+                                break;
+                            }
+                            /*else{
+                                super.queue.add(queue.getSize(), tmpJNode);
+                            } */
                         }
                     }
-
                 }
             }
         }
@@ -96,6 +102,7 @@ public class GreedySearchAlgorithm extends BaseAlgorithm implements InformedSear
         if (isGoal(node)) {
             ((Node) node.getUserObject()).setGoal(true);
             super.getResult().setGoalReached(true);
+            super.getResult().setCamino(node);
             return node;
         } else {
 

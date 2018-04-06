@@ -18,11 +18,13 @@ public abstract class BaseAlgorithm {
     protected int[][] matrix;
     protected Result result;
     protected Queue queue;
+   
 
     public BaseAlgorithm() {
         result = new Result();
         queue = new Queue();
     }
+   
 
     public int[][] getmatrix() {
         return matrix;

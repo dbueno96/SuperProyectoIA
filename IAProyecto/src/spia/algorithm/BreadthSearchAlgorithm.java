@@ -14,6 +14,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class BreadthSearchAlgorithm extends BaseAlgorithm implements SearchAlgorithm {
 
     public static final String CLAZZ_NAME = "Amplitud";
+    public static final String[] direcciones ={"derecha", "abajo", "arriba", "izquierda"};
 
     private int[] finalPosition;
 
@@ -25,9 +26,8 @@ public class BreadthSearchAlgorithm extends BaseAlgorithm implements SearchAlgor
     }
     
     public int h(DefaultMutableTreeNode node) {
-        int[] coorNode = ((Node) node.getUserObject()).getCoordinate();
-        return Math.abs(finalPosition[0] - coorNode[0]) + Math.abs(finalPosition[1] - coorNode[1]);
-    }
+        return 0;
+       }
 
     @Override
     public int f(DefaultMutableTreeNode node) {
@@ -36,8 +36,7 @@ public class BreadthSearchAlgorithm extends BaseAlgorithm implements SearchAlgor
 
     @Override
     public int g(DefaultMutableTreeNode node) {
-        int cost = super.getCost((Node) node.getUserObject());
-        return ((Node) ((DefaultMutableTreeNode) node.getParent()).getUserObject()).getfValue() + cost;
+        return 0;
     }
 
     @Override
@@ -57,7 +56,8 @@ public class BreadthSearchAlgorithm extends BaseAlgorithm implements SearchAlgor
                 // Preguntamos si el nodo ha sido expandido anteriormente en su camino.
                 // Con el fin de evitar ciclos.
                 if (!super.hasBeenExpandedAux(childrenpositions[i], node)) {
-                    Node tmpNode = new Node(childrenpositions[i]);
+                    Node tmpNode = new Node(childrenpositions[i], direcciones[i]);
+                    
                     DefaultMutableTreeNode tmpJNode = new DefaultMutableTreeNode(tmpNode);
                     // Lo agregamos a los hijos del nodo padre, de esta manera construimos el arbol.
                     super.result.getTree().insertNodeInto(tmpJNode, node, node.getChildCount());
@@ -84,8 +84,12 @@ public class BreadthSearchAlgorithm extends BaseAlgorithm implements SearchAlgor
     @Override
     public DefaultMutableTreeNode search(DefaultMutableTreeNode node) throws Exception {
         if (isGoal(node)) {
-            ((Node) node.getUserObject()).setGoal(true);
+           ((Node) node.getUserObject()).setGoal(true);
+            super.getResult().setCamino(node);
+            
+            //System.out.println((Node) node.getUserObject().getCoordinate()[0] );
             super.getResult().setGoalReached(true);
+            System.out.println(((Node) ((DefaultMutableTreeNode) node.getParent()).getUserObject()).getCamino());
             return node;
         } else {
 

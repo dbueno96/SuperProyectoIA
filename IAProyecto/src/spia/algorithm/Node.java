@@ -5,6 +5,7 @@
  */
 package spia.algorithm;
 
+
 /**
  *
  * @author Viviana
@@ -17,14 +18,25 @@ public class Node {
     private int hValue;
     private boolean goal;
     private boolean flower;
+    private String camino;
 
-    public Node(int [] coordinate) {
+    public Node(int [] coordinate, String camino) {
         this.coordinate = coordinate;
         goal = false;
         flower=false;
         fValue = 0;
         gValue = 0;
         hValue = 0;
+        this.camino = this.camino + " " + camino; 
+        
+    }
+    
+    public void setCamino(String camino){
+        camino =  camino+this.camino; 
+    }
+    
+    public String getCamino(){
+        return camino;
     }
     
     public int [] getCoordinate() {

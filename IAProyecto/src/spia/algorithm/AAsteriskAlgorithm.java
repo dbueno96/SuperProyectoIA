@@ -14,6 +14,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class AAsteriskAlgorithm extends BaseAlgorithm implements InformedSearchAlgorithm {
     
     public static final String CLAZZ_NAME = "AAsterik"; 
+    public static final String[] direcciones ={"derecha", "abajo", "arriba", "izquierda"};
 
     private int[] finalPosition;
 
@@ -60,7 +61,7 @@ public class AAsteriskAlgorithm extends BaseAlgorithm implements InformedSearchA
                 // Preguntamos si el nodo ha sido expandido anteriormente en su camino.
                 // Con el fin de evitar ciclos.
                 if (!super.hasBeenExpandedAux(childrenpositions[i], node)) {
-                    Node tmpNode = new Node(childrenpositions[i]);
+                    Node tmpNode = new Node(childrenpositions[i], direcciones[i]);
                     DefaultMutableTreeNode tmpJNode = new DefaultMutableTreeNode(tmpNode);
                     // Lo agregamos a los hijos del nodo padre, de esta manera construimos el arbol.
                     super.result.getTree().insertNodeInto(tmpJNode, node, node.getChildCount());
@@ -92,6 +93,7 @@ public class AAsteriskAlgorithm extends BaseAlgorithm implements InformedSearchA
         if (isGoal(node)) {
             ((Node) node.getUserObject()).setGoal(true);
             super.getResult().setGoalReached(true);
+            super.getResult().setCamino(node);
             return node;
         } else {
             expand(node);

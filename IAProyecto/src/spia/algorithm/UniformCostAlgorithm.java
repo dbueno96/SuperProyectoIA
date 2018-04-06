@@ -14,6 +14,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class UniformCostAlgorithm extends BaseAlgorithm implements SearchAlgorithm {
     
     public static final String CLAZZ_NAME = "UniformCostAlgorithm";
+    public static final String[] direcciones ={"derecha", "abajo", "arriba", "izquierda"};
 
     @Override
     public int f(DefaultMutableTreeNode node) {
@@ -43,7 +44,7 @@ public class UniformCostAlgorithm extends BaseAlgorithm implements SearchAlgorit
                 // Con el fin de evitar ciclos.
                 Node tmpNode = null;
                 if (!super.hasBeenExpandedAux(childrenpositions[i], node)) {
-                    tmpNode = new Node(childrenpositions[i]);
+                    tmpNode = new Node(childrenpositions[i],direcciones[i]);
                     DefaultMutableTreeNode tmpJNode = new DefaultMutableTreeNode(tmpNode);
                     // Lo agregamos a los hijos del nodo padre, de esta manera construimos el arbol.
                     super.result.getTree().insertNodeInto(tmpJNode, node, node.getChildCount());
@@ -74,6 +75,7 @@ public class UniformCostAlgorithm extends BaseAlgorithm implements SearchAlgorit
         if (isGoal(node)) {
             ((Node) node.getUserObject()).setGoal(true);
             super.getResult().setGoalReached(true);
+            super.getResult().setCamino(node);
             return node;
         } else {
             expand(node);
