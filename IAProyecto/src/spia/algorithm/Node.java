@@ -5,6 +5,8 @@
  */
 package spia.algorithm;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 
 /**
  *
@@ -16,9 +18,11 @@ public class Node {
     private int fValue;
     private int gValue;
     private int hValue;
+    private int depth = 0 ; 
     private boolean goal;
     private boolean flower;
     private String camino;
+    
 
     public Node(int [] coordinate, String camino) {
         this.coordinate = coordinate;
@@ -31,6 +35,14 @@ public class Node {
         
     }
     
+    public void setDepth(int parentDepth){
+       
+        this.depth =parentDepth +1;
+    }
+    
+    public int getDepth(){
+        return depth;
+    }
     public void setCamino(String camino){
         camino =  camino+this.camino; 
     }

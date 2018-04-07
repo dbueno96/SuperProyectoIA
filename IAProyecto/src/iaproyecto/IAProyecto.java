@@ -5,6 +5,7 @@
  */
 package iaproyecto;
 
+import iaproyecto.GUI.Gui;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,11 +48,11 @@ public class IAProyecto {
         SearchController sc = SearchController.getInstance() ; 
         
         try {
-            System.out.println("Amplitud");
+           /* System.out.println("Amplitud");
              
             Result result  = sc.search(mapa, "Amplitud");
             System.out.println("Created Nodes " + result.getCreatedNodes()); 
-            System.out.println("Expanded Nodes " + result.getExpandedNodes() );
+            System.out.println("Expanded Nodes " + result.getExpandedNodes() ); */
           /*
             
             TreeNode[] nodosCamino = result.getTree().getPathToRoot((TreeNode) result.getTree().getRoot());
@@ -64,7 +65,8 @@ public class IAProyecto {
             
             ((Node) ((DefaultMutableTreeNode) node.getParent()).getUserObject()).getCoordinate();
             ((Node ((DefaultMutableTreeNode) ((DefaultTreeModel) result.getTree()).get )))
-         */   System.out.println("Profundidad");
+         */ 
+          /*System.out.println("Profundidad");
             result  = sc.search(mapa, "Profundidad");
             System.out.println("Created Nodes " + result.getCreatedNodes()); 
             System.out.println("Expanded Nodes " + result.getExpandedNodes() );
@@ -83,6 +85,9 @@ public class IAProyecto {
             result = sc.search(mapa, "UniformCostAlgorithm");
             System.out.println("Created Nodes " + result.getCreatedNodes()); 
             System.out.println("Expanded Nodes " + result.getExpandedNodes() );
+            */
+            Gui ejecución = new Gui(mapa);
+            
             
             
         } catch (Exception ex) {

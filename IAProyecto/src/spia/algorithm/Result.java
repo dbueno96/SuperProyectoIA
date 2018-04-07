@@ -20,6 +20,7 @@ public class Result {
 
     private int createdNodes;
     private int expandedNodes;
+    private int treeDepth = 0;
     private DefaultTreeModel tree;
     private boolean goalReached;
     private  ArrayList<int[]> path; 
@@ -28,6 +29,19 @@ public class Result {
         return createdNodes;
     }
 
+    public void setDepth(DefaultMutableTreeNode node){
+       
+        int nodeDepth = ((Node) ((DefaultMutableTreeNode) node).getUserObject()).getDepth();
+        System.out.println("Max Depth() = " + treeDepth );
+        System.out.println("NodeDepth() " + nodeDepth);
+        if(nodeDepth >= treeDepth){
+            this.treeDepth = nodeDepth;
+        }
+    }
+    
+     public int getDepth(){
+        return treeDepth;
+    }
     public void setCamino(DefaultMutableTreeNode node) {
 
         //    TreePath path = new TreePath(node.getPath() )
@@ -36,20 +50,17 @@ public class Result {
         int size = treePath.length;
 
         for (int i = 0; i < size; i++) {
-            path.add(0, ((Node) ((DefaultMutableTreeNode) treePath[i]).getUserObject()).getCoordinate());
-            System.out.print("camino[" + i + "] = (" + ((Node) ((DefaultMutableTreeNode) treePath[i]).getUserObject()).getCoordinate()[0]);
-            System.out.print(", " + ((Node) ((DefaultMutableTreeNode) treePath[i]).getUserObject()).getCoordinate()[1]);
-            System.out.println(")");
+            path.add( ((Node) ((DefaultMutableTreeNode) treePath[i]).getUserObject()).getCoordinate());
+            
         }
         
-        //System.out.println(  ((Node) ((DefaultMutableTreeNode) node.getUserObject() )).getCoordinate()[0]); 
-        //    camino[0] = spia.algorithm.Node@6bc7c054
-        //System.out.println("Coord[0] " + ((Node) ((TreeNode) camino[0])).getCoordinate());
         int[] a = new int[4];
 
         System.out.println("camino.length() = " + treePath.length);
-
-        //System.out.println("Coord 0: " + (upNode.getCoordinate()[0])) ; 
+    }
+    
+    public ArrayList<int[]> getPath(){
+        return path;
     }
 
     public void setCreatedNodes(int createdNodes) {

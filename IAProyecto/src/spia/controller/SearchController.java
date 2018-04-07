@@ -8,7 +8,6 @@ package spia.controller;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import spia.algorithm.AAsteriskAlgorithm;
-import spia.algorithm.BaseAlgorithm;
 import spia.algorithm.Node;
 import spia.algorithm.Result;
 import spia.algorithm.UniformCostAlgorithm;
@@ -38,6 +37,7 @@ public class SearchController {
         return instance;
     }
     
+
     // Eg. SearchController.getInstance().search(matrix, AAsterik.class.getName())
     public Result search(int[][] matrix, String algorithm) throws Exception {
         Result result = null;
@@ -49,42 +49,52 @@ public class SearchController {
         
         switch(algorithm) {
             case UniformCostAlgorithm.CLAZZ_NAME:
+
                 UniformCostAlgorithm uca = new UniformCostAlgorithm();
                 uca.getResult().setTree(tree);
                 uca.setmatrix(matrix);                
                 uca.search(jNode);                
                 result = uca.getResult();
+
                 break;
             case AAsteriskAlgorithm.CLAZZ_NAME:
+
                 AAsteriskAlgorithm aa = new AAsteriskAlgorithm();
                 aa.getResult().setTree(tree);
                 aa.setmatrix(matrix);
                 aa.setFinalPosition(this.getFinalPosition(matrix));
                 aa.search(jNode);                
                 result = aa.getResult();
+
                 break;
-            case DepthSearchAlgorithm.CLAZZ_NAME: 
+            case DepthSearchAlgorithm.CLAZZ_NAME:
+ 
                 DepthSearchAlgorithm dsa = new DepthSearchAlgorithm(); 
                 dsa.getResult().setTree(tree);
                 dsa.setmatrix(matrix);
                 dsa.search(jNode);
                 result = dsa.getResult();
+
                 break; 
                 
             case BreadthSearchAlgorithm.CLAZZ_NAME:
+
                 BreadthSearchAlgorithm bsa = new BreadthSearchAlgorithm(); 
                 bsa.getResult().setTree(tree);
                 bsa.setmatrix(matrix);
                 bsa.search(jNode);
-                result = bsa.getResult(); 
+                result = bsa.getResult();
+
                 break; 
-            case GreedySearchAlgorithm.CLAZZ_NAME: 
+            case GreedySearchAlgorithm.CLAZZ_NAME:
+
                 GreedySearchAlgorithm gsa = new GreedySearchAlgorithm () ; 
                 gsa.getResult().setTree(tree);
                 gsa.setmatrix(matrix);
                 gsa.setFinalPosition(this.getFinalPosition(matrix));
                 gsa.search(jNode);
-                result = gsa.getResult(); 
+                result = gsa.getResult();
+
                 break; 
 
             default:                

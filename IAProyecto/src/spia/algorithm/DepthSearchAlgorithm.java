@@ -59,6 +59,7 @@ public class DepthSearchAlgorithm extends BaseAlgorithm implements SearchAlgorit
                 // Con el fin de evitar ciclos.
                 if (!super.hasBeenExpandedAux(childrenpositions[i], node)) {
                     Node tmpNode = new Node(childrenpositions[i],direcciones[i]);
+                    tmpNode.setDepth(  ((Node) ((DefaultMutableTreeNode) node).getUserObject()).getDepth() );
                     DefaultMutableTreeNode tmpJNode = new DefaultMutableTreeNode(tmpNode);
                     // Lo agregamos a los hijos del nodo padre, de esta manera construimos el arbol.
                     super.result.getTree().insertNodeInto(tmpJNode, node, node.getChildCount());
@@ -89,12 +90,15 @@ public class DepthSearchAlgorithm extends BaseAlgorithm implements SearchAlgorit
         } else {
 
             expand(node);
+            
             this.result.incExpandedNodes();
 
             if (super.queue.isEmpty()) {
                 throw new Exception("No es posible llegar a la meta.");
             }
-
+            
+            //Se verifica si es necesario incrementar la profundidad máxima del árbol.
+            super.getResult().setDepth(node); 
             DefaultMutableTreeNode nextNode = super.queue.poll(0);
 
             return search(nextNode);
