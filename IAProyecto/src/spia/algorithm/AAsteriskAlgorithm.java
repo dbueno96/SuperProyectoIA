@@ -60,7 +60,7 @@ public class AAsteriskAlgorithm extends BaseAlgorithm implements InformedSearchA
 
                 // Preguntamos si el nodo ha sido expandido anteriormente en su camino.
                 // Con el fin de evitar ciclos.
-                if (!super.hasBeenExpandedAux(childrenpositions[i], node)) {
+                //if (!super.hasBeenExpandedAux(childrenpositions[i], node)) {//
                     Node tmpNode = new Node(childrenpositions[i], direcciones[i]);
                     DefaultMutableTreeNode tmpJNode = new DefaultMutableTreeNode(tmpNode);
                     // Lo agregamos a los hijos del nodo padre, de esta manera construimos el arbol.
@@ -83,7 +83,7 @@ public class AAsteriskAlgorithm extends BaseAlgorithm implements InformedSearchA
                     // Añadimos a la cola de nodos por procesar.
                     super.queue.add(tmpJNode);
 
-                }
+                //}
             }
         }
     }

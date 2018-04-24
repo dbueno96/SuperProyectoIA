@@ -351,7 +351,7 @@ public class Gui implements ActionListener {
         for (int i = 1; i < caminoMario.size(); i++) {
 
             antes = caminoMario.get(i - 1);
-            if (guardar == 0) {
+            if (guardar == 0 || guardar ==2 ) {
                 matrizLab[antes[0]][antes[1]].setIcon(new ImageIcon(getClass().getResource("/iaproyecto/imagenes/espacio.jpg")));
                 //System.out.println(prueba2[0]+ " "  + prueba2[1]);
 
@@ -368,6 +368,11 @@ public class Gui implements ActionListener {
            // System.out.println(marioAhora[0] + " " + marioAhora[1]);
             guardar = matriz[marioAhora[0]][marioAhora[1]];
         }
+        
+        if (marioAhora[0]==0 && marioAhora[1] == 8 ){
+            System.out.println("por aqui paso mario");
+        }
+        
         matrizLab[marioAhora[0]][marioAhora[1]].setIcon(new ImageIcon(getClass().getResource("/iaproyecto/imagenes/marioPrincessKiss.gif")));
 
     }
